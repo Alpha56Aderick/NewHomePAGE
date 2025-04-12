@@ -1,4 +1,4 @@
-/* General Styles */
+/* General Styles of */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -18,7 +18,7 @@ body {
   justify-content: flex-start;
   border-radius: 24px;
   padding: 32px;
-  background: #f8f9fa;
+  background: #ffffff;
 }
 
 .filter-select {
@@ -126,6 +126,8 @@ body {
 .filter-select:focus {
   border-radius: 24px 24px 0 0;
   outline: none;
+  background-color: #ffffff;
+  border-color: #007bff;
 }
 
 /* First and last option rounding */
@@ -139,7 +141,7 @@ body {
 
 .filter-select option:hover {
   background: #007bff;
-  color: white;
+  color: rgb(250, 250, 250);
 }
 
 .filter-select option:checked {
@@ -147,24 +149,6 @@ body {
   color: #212529;
   font-weight: 500;
 }
-
-/* Specific degree options styling */
-.filter-select option[value="certificate"] {
-  color: #28a745;
-}
-
-.filter-select option[value="diploma"] {
-  color: #17a2b8;
-}
-
-.filter-select option[value="bachelor"] {
-  color: #007bff;
-}
-
-.filter-select option[value="masters"] {
-  color: #6f42c1;
-}
-
 /* Documents Section */
 .documents-section {
   display: grid;
@@ -184,15 +168,17 @@ body {
   position: relative;
   background: white;
   border-radius: 24px;
-  height: 250px;
+  height: 193px;
   width: 100%;
   overflow: hidden;
+  border: 1px solid #0077b6;
+  border-radius: 12px;
 }
 
 .doc-image {
   height: 250px;
   width: 100%;
-  background-color: #f0f0f0;
+  background-color: hwb(0 100% 0%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -244,12 +230,13 @@ body {
 }
 
 .action-container {
-  background: #f0f0f0;
-  border-radius: 24px;
+  background: #ffffff;
   padding: 10px 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border : 3px solid #04192E;
+  border-radius: 12px;
 }
 
 .icons {
@@ -314,8 +301,9 @@ body {
 }
 
 .like-icon.liked {
-  color: #ff0000;
-  animation: pulse 0.5s;
+  color: #e63946; /* Muted red to match site palette */
+  animation: pulse 0.5s, glow 0.5s;
+  filter: drop-shadow(0 0 4px rgba(230, 57, 70, 0.5));
 }
 
 @keyframes pulse {
@@ -324,119 +312,52 @@ body {
   100% { transform: scale(1); }
 }
 
-/* Offline Downloads Section */
-.offline-downloads {
-  margin-top: 20px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+@keyframes glow {
+  0% { filter: drop-shadow(0 0 2px rgba(230, 57, 70, 0.3)); }
+  50% { filter: drop-shadow(0 0 8px rgba(230, 57, 70, 0.5)); }
+  100% { filter: drop-shadow(0 0 4px rgba(230, 57, 70, 0.4)); }
 }
 
-.downloads-container {
-  position: relative;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-/* Dropdown Styles */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-button {
-  background: #ffffff;
-  color: #333;
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
+.like-icon {
+  transition: all 0.3s ease;
   cursor: pointer;
+  color: #6c757d; /* Muted gray for inactive state */
+}
+
+.like-icon:hover {
+  transform: scale(1.1);
+  color: #e63946; /* Same as liked color but without glow */
+}
+
+/* Star Rating Styles */
+.action-container-inner {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   width: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s ease;
-}
-
-.dropdown-button:hover {
-  background: #f9f9f9;
-}
-
-.arrow {
-  margin-left: 10px;
-  font-size: 12px;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  max-height: 200px;
-  overflow-y: auto;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.dropdown.open .dropdown-menu {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.dropdown-item {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 15px;
-  font-size: 14px;
-  color: #333;
-  border-bottom: 1px solid #f0f0f0;
-  transition: background 0.3s ease;
 }
 
-.dropdown-item:hover {
-  background: #f0f0f0;
-}
-
-.download-details {
+.rating-stars {
   display: flex;
-  flex-direction: column;
+  gap: 4px;
 }
 
-.download-name {
-  font-weight: bold;
-  margin-bottom: 5px;
+.icons {
+  margin-left: auto;
 }
 
-.download-size,
-.download-time {
-  font-size: 12px;
-  color: #666;
-}
-
-.delete-button {
-  background: none;
-  border: none;
-  color: #ff4d4d;
-  font-size: 16px;
+.star-icon {
+  color: #ccc;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: all 0.2s ease;
+  font-size: 16px;
 }
 
-.delete-button:hover {
-  color: #ff0000;
+.star-icon.active {
+  color: #ffc107;
 }
+
+.star-icon:hover {
+  transform: scale(1.2);
+}
+

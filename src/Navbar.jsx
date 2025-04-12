@@ -2,7 +2,7 @@ import React from "react";
 import { FaSearch, FaCog, FaBell, FaUserCircle } from "react-icons/fa";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ onSearch }) => {
   return (
     <nav className="navbar">
       <div className="logo">ARCHIVES</div>
@@ -15,7 +15,11 @@ const Navbar = () => {
       <div className="search-container">
         <div className="search-bar">
           <FaSearch className="search-icon" />
-          <input type="text" placeholder="Search documents..." />
+          <input 
+            type="text" 
+            placeholder="Search documents..." 
+            onChange={(e) => onSearch(e.target.value)}
+          />
         </div>
       </div>
       <div className="icons-container">
